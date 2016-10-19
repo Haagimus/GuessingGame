@@ -32,6 +32,7 @@ function submit() {
       _("submit").style.display = "none";
     } else {
       _("greeting").innerHTML = "Your guess was too low.<br/><br/>You have " + guesses + " guesses remaining.";
+      _("guess").innerHTML = "";
     }
   } else {
     _("greeting").innerHTML = "Sorry but you ran out of guesses.<br/>The number you were failed to guess was " + randomNumber;
