@@ -26,13 +26,14 @@ function submit() {
     guesses--;
     if (userInput > randomNumber) {
       _("greeting").innerHTML = "Your guess was too high.<br/><br/>You have " + guesses + " guesses remaining.";
-      _("guess").innerHTML = "";
+      _("guess").value = "";
     } else if (userInput == randomNumber) {
       _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (10 - guesses) + " trys."
       _("submit").style.display = "none";
+      _("guess").value = "";
     } else {
       _("greeting").innerHTML = "Your guess was too low.<br/><br/>You have " + guesses + " guesses remaining.";
-      _("guess").innerHTML = "";
+      _("guess").value = "";
     }
   } else {
     _("greeting").innerHTML = "Sorry but you ran out of guesses.<br/>The number you were failed to guess was " + randomNumber;
