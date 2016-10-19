@@ -1,0 +1,93 @@
+div {
+  text-align: center;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+input[type=textbox] {
+  border: none;
+  border-bottom: 2pt solid darkgreen;
+  text-align: inherit;
+  font-size: inherit;
+  transition: width 0.8s;
+  width: 50px;
+}
+
+input[type=textbox]:focus {
+  outline: none;
+  transition: width 0.8s;
+  width: 150px;
+}
+
+input[type=textbox]::-ms-clear {
+    display: none;
+}
+
+#submit {
+  padding: 0 25px;
+  padding-top: 5px;
+  height: 45px;
+  text-transform: uppercase;
+  color: #3E5706;
+  background: #A5CD4E;
+  border: none;
+  position: relative;
+  margin: 10px;
+  font: bold 20px/22px Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, .22);
+
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-translation: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#submit:focus {
+  outline: none;
+}
+#reset {
+  padding: 0 25px;
+  padding-top: 5px;
+  height: 45px;
+  text-transform: uppercase;
+  color: #6E2615;
+  background: #CD6E55;
+  border: none;
+  position: relative;
+  margin: 10px;
+  font: bold 20px/22px Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, .22);
+
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px rgba(255, 255, 255, .44);
+
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-translation: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#reset:focus {
+  outline: none;
+}
