@@ -4,7 +4,7 @@ div {
   font-weight: bold;
 }
 
-input[type=textbox] {
+input[type=number] {
   border: none;
   border-bottom: 2pt solid darkgreen;
   text-align: inherit;
@@ -13,13 +13,13 @@ input[type=textbox] {
   width: 50px;
 }
 
-input[type=textbox]:focus {
+input[type=number]:focus {
   outline: none;
   transition: width 0.8s;
   width: 150px;
 }
 
-input[type=textbox]::-ms-clear {
+input[type=number]::-ms-clear {
     display: none;
 }
 
