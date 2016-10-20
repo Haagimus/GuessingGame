@@ -27,7 +27,8 @@ function getDifficulty(diff) {
   var top;
   
   switch (diff) {
-    case "easy":
+
+   case "easy":
       num = 100;
       break;
     case "medium":
@@ -70,6 +71,7 @@ function submit() {
     } else if (userInput == randomNumber) {
       _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (cnt - guesses) + " trys."
       _("submit").style.display = "none";
+      _("guess").style.display = "none";
       _("guess").value = "";
     } else {
       _("greeting").innerHTML = "Your guess was too low.<br/><br/>You have " + guesses + " guesses remaining.";
