@@ -1,22 +1,61 @@
 var randomNumber; 
-var guesses = 10;
+var guesses;
+var cnt = 0;
 
 function _(id) {
   return document.getElementById(id);
 }
 
 function reset() {
-  guesses = 10;
-  _("greeting").innerHTML = "I'm thinking of a number between 1 and 100<br/>can you guess what it is?<br/><br/>You have " + guesses + " guesses remaining.";
-  randomNumber = Math.floor(Math.random() * 100) + 1;
-  _("guess").value = "";
-  _("submit").style.display = "inline";
-  _("guess").style.display = "inline";
+  _("selectDifficulty").innerHTML = "Select Difficulty";
+  _("difficulty").style.display = "inline";
+  _("greeting").innerHTML = "";
+  _("guess").style.display = "none";
+  _("submit").style.display = "none";
+  _("reset").style.display = "none";
 }
 
 window.onload = function greet() {
-  _("greeting").innerHTML = "I'm thinking of a number between 1 and 100<br/>can you guess what it is?<br/><br/>You have " + guesses + " guesses remaining.";
-  randomNumber = Math.floor(Math.random() * 100) + 1;
+  _("guess").style.display = "none";
+  _("submit").style.display = "none";
+  _("reset").style.display = "none";
+}
+
+function getDifficulty(diff) {
+  var num;
+  var top;
+
+  
+  switch (diff) {
+    case "easy":
+      num = 100;
+      break;
+    case "medium":
+      num = 1000;
+      break;
+    case "hard":
+      num = 10000;
+      break;
+    case "veryHard":
+      num = 100000;
+      break;
+  }
+  
+  top = num;
+  
+  while (num > 1) {
+    num = Math.ceil(num / 2);
+    cnt++;
+  }
+  guesses = cnt;
+  
+  _("selectDifficulty").innerHTML = "";
+  _("difficulty").style.display = "none";
+  _("greeting").innerHTML = "I'm thinking of a number between 1 and " + top + "<br/>can you guess what it is?<br/><br/>You have " + guesses + " guesses remaining.";
+  randomNumber = Math.floor(Math.random() * top) + 1;
+  _("guess").style.display = "inline";
+  _("submit").style.display = "inline";
+  _("reset").style.display = "inline";
   _("guess").value = "";
 }
 
@@ -28,7 +67,7 @@ function submit() {
       _("greeting").innerHTML = "Your guess was too high.<br/><br/>You have " + guesses + " guesses remaining.";
       _("guess").value = "";
     } else if (userInput == randomNumber) {
-      _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (10 - guesses) + " trys."
+      _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (cnt - guesses) + " trys."
       _("submit").style.display = "none";
       _("guess").value = "";
     } else {
@@ -47,4 +86,8 @@ _("guess").addEventListener("keyup", function(event) {
     if (event.keyCode == 13) {
         _("submit").click();
     }
+});
+
+_("difficulty").addEventListener("change", function() {
+  getDifficulty(_("difficulty").value);
 });
