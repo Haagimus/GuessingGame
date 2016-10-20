@@ -38,6 +38,7 @@ select {
   border: 0 !important;
   /*REMOVES BORDER*/
   background-color: #558C89;
+  font-size: bold 20px/22px Arial, sans-serif;
   color: #FFF;
   border-radius: 20px;
   width: 25%;
