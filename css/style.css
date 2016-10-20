@@ -1,3 +1,7 @@
+body {
+  background: #ECECEA;
+}
+
 div {
   text-align: center;
   font-size: 18pt;
@@ -23,13 +27,34 @@ input[type=number]::-ms-clear {
     display: none;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0 !important;
+  background-color: #558C89;
+  color: #FFF;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  width: 25%;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select::focus::-ms-value {
+  background-color: transparent;
+}
+
 #submit {
   padding: 0 25px;
   padding-top: 5px;
   height: 45px;
   text-transform: uppercase;
-  color: #3E5706;
-  background: #A5CD4E;
+  color: #DDD;
+  background: #558C89;
   border: none;
   position: relative;
   margin: 10px;
@@ -62,8 +87,8 @@ input[type=number]::-ms-clear {
   padding-top: 5px;
   height: 45px;
   text-transform: uppercase;
-  color: #6E2615;
-  background: #CD6E55;
+  color: #DDD;
+  background: #C63D0F;
   border: none;
   position: relative;
   margin: 10px;
