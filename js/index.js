@@ -62,7 +62,7 @@ function getDifficulty(diff) {
 }
 
 function submit() {
-  if (guesses > 1) {
+  if (guesses > 0) {
     var userInput = _("guess").value;
     guesses--;
     if (userInput > randomNumber) {
