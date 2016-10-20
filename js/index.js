@@ -1,5 +1,6 @@
 var randomNumber;
 var guesses;
+var cnt = 0;
 
 function _(id) {
   return document.getElementById(id);
@@ -23,7 +24,6 @@ window.onload = function greet() {
 
 function getDifficulty(diff) {
   var num;
-  var cnt = 0;
   var top;
   
   switch (diff) {
@@ -47,13 +47,13 @@ function getDifficulty(diff) {
     num = Math.ceil(num / 2);
     cnt++;
   }
-  console.log(cnt);
+  
   guesses = cnt;
 
   _("selectDifficulty").innerHTML = "";
   _("difficulty").style.display = "none";
   _("greeting").innerHTML = "I'm thinking of a number between 1 and " + top + "<br/>can you guess what it is?<br/><br/>You have " + guesses + " guesses remaining.";
-  randomNumber = Math.floor(Math.random() * 100) + 1;
+  randomNumber = Math.floor(Math.random() * top) + 1;
   _("guess").style.display = "inline";
   _("submit").style.display = "inline";
   _("reset").style.display = "inline";
@@ -68,7 +68,7 @@ function submit() {
       _("greeting").innerHTML = "Your guess was too high.<br/><br/>You have " + guesses + " guesses remaining.";
       _("guess").value = "";
     } else if (userInput == randomNumber) {
-      _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (10 - guesses) + " trys."
+      _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (cnt - guesses) + " trys."
       _("submit").style.display = "none";
       _("guess").value = "";
     } else {
