@@ -1,6 +1,6 @@
 var randomNumber;
 var guesses;
-var cnt = 0;
+var cnt;
 
 function _(id) {
   return document.getElementById(id);
@@ -14,12 +14,16 @@ function reset() {
   _("submit").style.display = "none";
   _("reset").style.display = "none";
   _("difficulty").value = "none";
+  cnt = 0;
+  guesses = 0;
 }
 
 window.onload = function greet() {
   _("guess").style.display = "none";
   _("submit").style.display = "none";
   _("reset").style.display = "none";
+  cnt = 0;
+  guesses = 0;
 }
 
 function getDifficulty(diff) {
@@ -62,7 +66,7 @@ function getDifficulty(diff) {
 }
 
 function submit() {
-  if (guesses > 0) {
+  if (guesses >= 0) {
     var userInput = _("guess").value;
     guesses--;
     if (userInput > randomNumber) {
