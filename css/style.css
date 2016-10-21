@@ -58,7 +58,6 @@ select:focus::-ms-value {
   font-size: 14px;
   font-variant: small-caps;
   color: grey;
-  width: 225px;
   word-wrap: break-word;
   white-space: normal;
 }
