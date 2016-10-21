@@ -1,58 +1,49 @@
 <!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>Guessing game</title>
-    
-    
-    <link rel="stylesheet" href="css/normalize.css">
-
-    
-        <link rel="stylesheet" href="css/style.css">
-
-    
-    
-    
-    
-  </head>
-
-  <body>
-
-    <html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Practice</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/index.js"></script>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div>
-    <p id="selectDifficulty">Select Difficulty</p>
-    <select id="difficulty" name="difficulty">
-      <option value="none"></option>
-      <option value="easy">Easy 1-100</option>
-      <option value="medium">Med 1-1,000</option>
-      <option value="hard">Hard 1-10,000</option>
-      <option value="veryHard">VH 1-100,000</option>
-    </select>
-    <p id="greeting"></p>
-    <input id="guess" type="number" />
-  </div>
-  <div>
-    <input id="submit" type="button" value="submit" onclick="submit()" />
-    <input id="reset" type="button" value="reset" onclick="reset()" />
-  </div>
+
+    <html lang="en">
+
+    <body>
+        <div>
+            <p id="selectDifficulty">Select Mode</p>
+            <select id="difficulty" name="difficulty">
+              <option value="none"></option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="veryHard">Very Hard</option>
+            </select>
+          </div>
+          <div>
+            <p id="greeting"></p>
+            <label id="previousMode"></label>
+            <br/>
+            <label id="wins"></label>
+            <label id="losses"></label>
+            <label id="handicap"></label>
+            <br/>
+            <input id="guess" type="number" />
+            <input id="submit" type="button" value="submit" onclick="submit()" />
+        </div>
+        <div>
+            <input id="reset" type="button" value="Give Up" onclick="reset()" />
+        </div>
+        <div>
+          <p id="history"></p>
+        </div>
+    </body>
+
+    </html>
+    <script src="js/index.js"></script>
+
 </body>
 
-</html>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
-
-        <script src="js/index.js"></script>
-
-    
-    
-  </body>
 </html>
