@@ -113,7 +113,7 @@ function submit() {
         guesses--;
         if (userInput > randomNumber) {
             _("greeting").innerHTML = "Your guess was too high.<br/><br/>You have " + guesses + " guesses remaining.";
-            allGuesses.push(userInput + "(h)");
+            allGuesses.push(" " + userInput + "(h)");
             _("history").innerHTML = "Previous guesses: <br/>" + allGuesses;
             _("guess").value = "";
         } else if (userInput == randomNumber) {
