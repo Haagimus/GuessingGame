@@ -117,7 +117,7 @@ function submit() {
             _("history").innerHTML = "Previous guesses: <br/>" + allGuesses;
             _("guess").value = "";
         } else if (userInput == randomNumber) {
-            _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (cnt - guesses) + " trys."
+            _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (cnt - guesses) + " tries."
             _("submit").style.display = "none";
             _("reset").style.display = "none";
             _("guess").style.display = "none";
