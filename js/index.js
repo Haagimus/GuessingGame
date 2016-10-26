@@ -8,7 +8,9 @@ var handicap = 0;
 var quit = false;
 var previousDiff;
 var currentDiff;
-var allGuesses = [];
+var lowGuess;
+var highGuess;
+var diffMessage;
 var won = false;
 
 function _(id) {
@@ -17,30 +19,31 @@ function _(id) {
 
 function reset() {
     if (finished == false) {
-        losses++;
-        handicap += 2;
+        losses++;    
+        handicap += 2;    
         console.log(handicap);
-    } else {
-        finished = false;
-        handicap = 0;
-    }
-    allGuesses = [];
+    } else {    
+        finished = false;    
+        handicap = 0;  
+    }  
+ 
     previousDiff = currentDiff;
     if (won != true) {
-      _("previousMode").innerHTML = "The previous mode was " + previousDiff + ".<br/>Selecting the same difficulty again<br/>will add bonus guesses.";
-    }
+        _("previousMode").innerHTML = "The previous mode was " + previousDiff + ".<br/>Selecting the same difficulty again<br/>will add bonus guesses.";  
+    }  
     _("selectDifficulty").innerHTML = "Select Difficulty";
-    _("difficulty").style.display = "inline";
-    _("greeting").innerHTML = "";
-    _("guess").style.display = "none";
-    _("submit").style.display = "none";
-    _("reset").style.display = "none";
-    _("difficulty").value = "none";
-    _("wins").innerHTML = "wins: " + wins;
-    _("losses").innerHTML = "losses: " + losses;
-    _("handicap").innerHTML = "Bonus guesses: " + handicap;
-    won = false;
-    cnt = 0;
+    _("difficulty").style.display = "inline";  
+    _("greeting").innerHTML = "";  
+    _("guess").style.display = "none";  
+    _("submit").style.display = "none";  
+    _("reset").style.display = "none";  
+    _("difficulty").value = "none";  
+    _("wins").innerHTML = "wins: " + wins;  
+    _("losses").innerHTML = "losses: " + losses;  
+    _("handicap").innerHTML = "Bonus guesses: " + handicap;  
+    _("history").innerHTML = "";  
+    won = false;  
+    cnt = 0;  
     guesses = 0;
 }
 
@@ -54,45 +57,41 @@ cnt = 0;
 guesses = 0;
 
 function getDifficulty(diff) {
-    var num;
-    var top;
-    var diffMessage;
-    currentDiff = diff;
-
+    var num;  
+    var top;  
+    currentDiff = diff;  
+    
     switch (diff) {
-
-        case "easy":
-            num = 100;
-            diffMessage = "Easy mode: 1-100";
-            break;
-        case "medium":
-            num = 1000;
-            diffMessage = "Medium mode: 1-1,000";
-            break;
-        case "hard":
-            num = 10000;
-            diffMessage = "Hard mode: 1-10,000";
-            break;
-        case "veryHard":
-            num = 100000;
-            diffMessage = "Very Hard mode: 1-100,000";
-            break;
-    }
-
-    top = num;
-
-    while (num > 1) {
-        num = Math.ceil(num / 2);
-        cnt++;
-    }
-
+        case "easy":      
+            num = 100;      
+            diffMessage = "Easy mode: 1-100";      
+            break;    
+        case "medium":      
+            num = 1000;      
+            diffMessage = "Medium mode: 1-1,000";      
+            break;    
+        case "hard":      
+            num = 10000;      
+            diffMessage = "Hard mode: 1-10,000";      
+            break;    
+        case "veryHard":      
+            num = 100000;      
+            diffMessage = "Very Hard mode: 1-100,000";      
+            break;  
+                }  
+    top = num;  
+    while (num > 1) {    
+        num = Math.ceil(num / 2);    
+        cnt++;  
+    }  
+    
     if (previousDiff == diff) {
         guesses = cnt + handicap;
     } else {
         guesses = cnt;
         handicap = 0;
     }
-
+    
     _("previousMode").innerHTML = "";
     _("previousMode").style.borderCollapse = "collapse";
     _("selectDifficulty").innerHTML = "";
@@ -106,21 +105,29 @@ function getDifficulty(diff) {
     _("guess").value = "";
 }
 
-
 function submit() {
     if (guesses !== 1) {
         var userInput = _("guess").value;
         guesses--;
         if (userInput > randomNumber) {
             _("greeting").innerHTML = "Your guess was too high.<br/><br/>You have " + guesses + " guesses remaining.";
-            allGuesses.push(" " + userInput + "(h)");
-            _("history").innerHTML = "Previous guesses: <br/>" + allGuesses;
-            _("guess").value = "";
+            setTimeout(function() {
+                _("guess").value = "";
+                if (userInput < highGuess || highGuess == undefined) {
+                    highGuess = userInput;
+                }
+                var difference = highGuess - lowGuess;
+                if (isNaN(difference)) {
+                    difference = "";
+                }        
+                _("greeting").innerHTML = diffMessage + "<br/><br/>You have " + guesses + " guesses remaining.";
+                _("history").innerHTML = "Low guess: " + lowGuess + "<br/>High Guess: " + highGuess + "<br/>Difference: " + difference;
+            }, 2500);
         } else if (userInput == randomNumber) {
-            _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (cnt - guesses) + " tries."
+            _("greeting").innerHTML = "CONGRATULATIONS YOU GUESSED THE NUMBER!!<br/>It took you " + (cnt - guesses) + " tries.";
             _("submit").style.display = "none";
-            _("reset").style.display = "none";
-            _("guess").style.display = "none";
+            _("reset").style.display = "none"; 
+            _("guess").style.display = "none"; 
             _("history").innerHTML = "";
             _("guess").value = "";
             won = true;
@@ -130,11 +137,21 @@ function submit() {
             setTimeout(function() {
                 reset();
             }, 5000);
-        } else {
+        } else { 
             _("greeting").innerHTML = "Your guess was too low.<br/><br/>You have " + guesses + " guesses remaining.";
-            allGuesses.push(userInput + "(l)")
-            _("history").innerHTML = "Previous guesses: <br/>" + allGuesses;
             _("guess").value = "";
+            setTimeout(function() {
+                if (userInput > lowGuess || lowGuess == undefined) {
+                    lowGuess = userInput;
+                }        
+                var difference = highGuess - lowGuess;
+                if (isNaN(difference)) {          
+                    console.log(difference);
+                    difference = "";
+                }        
+                _("greeting").innerHTML = diffMessage + "<br/><br/>You have " + guesses + " guesses remaining.";
+                _("history").innerHTML = "Low guess: " + lowGuess + "<br/>High Guess: " + highGuess + "<br/>Difference: " + difference;
+            }, 2500);
         }
     } else {
         _("greeting").innerHTML = "Sorry but you ran out of guesses.<br/>The number you were failed to guess was " + randomNumber;
@@ -145,16 +162,15 @@ function submit() {
         _("losses").innerHTML = "losses: " + losses;
         finished = true;
         setTimeout(function() {
-            reset()
+            reset()    
         }, 5000);
     }
 }
 
-
 _("guess").addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode == 13) {
-        _("submit").click();
+        _("submit").click();  
     }
 });
 
