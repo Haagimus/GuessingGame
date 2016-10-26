@@ -92,7 +92,8 @@ function getDifficulty(diff) {
             diffMessage = "Very Hard mode: 1-100,000";      
             break;  
                 } 				
-    top = highGuess = num;	
+    top = num;
+    highGuess = num;	
     while (num > 1) {    
         num = Math.ceil(num / 2);    
         cnt++;  
